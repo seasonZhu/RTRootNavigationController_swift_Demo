@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,11 @@
 		6138348D2375192400060DD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6138348B2375192400060DD1 /* Main.storyboard */; };
 		6138348F2375192A00060DD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6138348E2375192A00060DD1 /* Assets.xcassets */; };
 		613834922375192A00060DD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 613834902375192A00060DD1 /* LaunchScreen.storyboard */; };
+		6138349E2375199D00060DD1 /* RTRootNavigationController_swift in Frameworks */ = {isa = PBXBuildFile; productRef = 6138349D2375199D00060DD1 /* RTRootNavigationController_swift */; };
+		613834A02375414A00060DD1 /* DisableInteractivePopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6138349F2375414A00060DD1 /* DisableInteractivePopController.swift */; };
+		613834A22375565500060DD1 /* NormalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613834A12375565500060DD1 /* NormalController.swift */; };
+		613834A423755AF400060DD1 /* NavigationbarHiddenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613834A323755AF400060DD1 /* NavigationbarHiddenController.swift */; };
+		613834A623755BFD00060DD1 /* PushAndRemoveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613834A523755BFD00060DD1 /* PushAndRemoveController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		6138348E2375192A00060DD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		613834912375192A00060DD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		613834932375192A00060DD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6138349B2375197600060DD1 /* RTRootNavigationController_swift */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RTRootNavigationController_swift; sourceTree = "<group>"; };
+		6138349F2375414A00060DD1 /* DisableInteractivePopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableInteractivePopController.swift; sourceTree = "<group>"; };
+		613834A12375565500060DD1 /* NormalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalController.swift; sourceTree = "<group>"; };
+		613834A323755AF400060DD1 /* NavigationbarHiddenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationbarHiddenController.swift; sourceTree = "<group>"; };
+		613834A523755BFD00060DD1 /* PushAndRemoveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAndRemoveController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6138349E2375199D00060DD1 /* RTRootNavigationController_swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +51,10 @@
 		613834792375192400060DD1 = {
 			isa = PBXGroup;
 			children = (
+				6138349B2375197600060DD1 /* RTRootNavigationController_swift */,
 				613834842375192400060DD1 /* RTRootNavigationController_swift_Demo */,
 				613834832375192400060DD1 /* Products */,
+				6138349C2375199D00060DD1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +72,23 @@
 				613834852375192400060DD1 /* AppDelegate.swift */,
 				613834872375192400060DD1 /* SceneDelegate.swift */,
 				613834892375192400060DD1 /* ViewController.swift */,
+				6138349F2375414A00060DD1 /* DisableInteractivePopController.swift */,
+				613834A12375565500060DD1 /* NormalController.swift */,
+				613834A323755AF400060DD1 /* NavigationbarHiddenController.swift */,
+				613834A523755BFD00060DD1 /* PushAndRemoveController.swift */,
 				6138348B2375192400060DD1 /* Main.storyboard */,
 				6138348E2375192A00060DD1 /* Assets.xcassets */,
 				613834902375192A00060DD1 /* LaunchScreen.storyboard */,
 				613834932375192A00060DD1 /* Info.plist */,
 			);
 			path = RTRootNavigationController_swift_Demo;
+			sourceTree = "<group>";
+		};
+		6138349C2375199D00060DD1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +107,9 @@
 			dependencies = (
 			);
 			name = RTRootNavigationController_swift_Demo;
+			packageProductDependencies = (
+				6138349D2375199D00060DD1 /* RTRootNavigationController_swift */,
+			);
 			productName = RTRootNavigationController_swift_Demo;
 			productReference = 613834822375192400060DD1 /* RTRootNavigationController_swift_Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -139,6 +166,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6138348A2375192400060DD1 /* ViewController.swift in Sources */,
+				613834A22375565500060DD1 /* NormalController.swift in Sources */,
+				613834A02375414A00060DD1 /* DisableInteractivePopController.swift in Sources */,
+				613834A423755AF400060DD1 /* NavigationbarHiddenController.swift in Sources */,
+				613834A623755BFD00060DD1 /* PushAndRemoveController.swift in Sources */,
 				613834862375192400060DD1 /* AppDelegate.swift in Sources */,
 				613834882375192400060DD1 /* SceneDelegate.swift in Sources */,
 			);
@@ -338,6 +369,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6138349D2375199D00060DD1 /* RTRootNavigationController_swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RTRootNavigationController_swift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6138347A2375192400060DD1 /* Project object */;
 }
