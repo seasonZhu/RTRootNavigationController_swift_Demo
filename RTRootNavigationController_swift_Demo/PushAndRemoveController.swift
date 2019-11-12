@@ -9,6 +9,11 @@
 import UIKit
 
 class PushAndRemoveController: UIViewController {
+    
+    private lazy var switcher: UISwitch = {
+        return UISwitch()
+    }()
+    
     /// 这个有问题
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +24,23 @@ class PushAndRemoveController: UIViewController {
         button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
         button.center = view.center
         view.addSubview(button)
+        
+        switcher.sizeToFit()
+        switcher.isOn = true
+        switcher.center = CGPoint(x: view.center.x, y: view.center.y + 100)
+        view.addSubview(switcher)
+        
+        let label = UILabel()
+        label.text = "Push with Animated?"
+        label.textColor = UIColor.black
+        label.sizeToFit()
+        label.center = CGPoint(x: view.center.x, y: view.center.y + 144)
+        view.addSubview(label)
     }
     
     @objc
     func buttonAction(_ button: UIButton) {
-        rt.navigationController?.pushViewController(viewController: NormalController(), animated: true, complete: { (_) in
+        rt.navigationController?.pushViewController(viewController: NormalController(), animated: switcher.isOn, complete: { (_) in
             self.rt.navigationController?.removeViewController(controller: self)
         })
     }

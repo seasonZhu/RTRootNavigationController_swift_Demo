@@ -14,7 +14,12 @@ class ViewController: UIViewController {
     var tableView: UITableView!
     
     //原始数据集
-    let dataSource = ["Disable Interactive Pop", "Normal", "Navigationbar Hidden", "Push and remove"]
+    let dataSource = ["Disable Interactive Pop",
+                      "Normal",
+                      "Navigationbar Hidden",
+                      "Push and remove",
+                      "CustomNavigationBar",
+                      "With Toolbar"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +61,8 @@ extension ViewController: UITableViewDelegate {
             navigationController?.pushViewController(NavigationbarHiddenController(), animated: true)
         case 3:
             navigationController?.pushViewController(PushAndRemoveController(), animated: true)
+        case 4:
+            navigationController?.pushViewController(CustomNavigationBarController(), animated: true)
         default:
             break
         }
