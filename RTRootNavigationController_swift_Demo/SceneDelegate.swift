@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let vc = ViewController()
         let navi = RTRootNavigationController(rootViewController: vc)
-        navi.useSystemBackBarButtonItem = true
+        navi.useSystemBackBarButtonItem = false
         window.rootViewController = navi
         self.window = window
         window.makeKeyAndVisible()
