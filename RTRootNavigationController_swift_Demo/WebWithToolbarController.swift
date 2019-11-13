@@ -183,6 +183,7 @@ extension WebWithToolbarController: WKNavigationDelegate {
     }
 }
 
+//MARK:- UIScrollViewDelegate 这个在监听中的取消请求的方法 可能会导致标题不能更新
 extension WebWithToolbarController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // 下面这个方法是取消所有的之前的请求,这个太可怕了 还是有针对性的进行取消
