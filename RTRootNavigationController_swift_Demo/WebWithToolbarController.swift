@@ -78,6 +78,9 @@ class WebWithToolbarController: UIViewController {
         
         view.addSubview(webView)
         webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
+        webView.scrollView.showsHorizontalScrollIndicator = false
+        webView.scrollView.showsVerticalScrollIndicator = false
+        webView.scrollView.delegate = self
         webView.scrollView.contentInset = .zero
         webView.insertSubview(indicateLabel, belowSubview: webView.scrollView)
         webView.addConstraints([
@@ -85,7 +88,7 @@ class WebWithToolbarController: UIViewController {
             NSLayoutConstraint(item: indicateLabel, attribute: .centerX, relatedBy: .equal, toItem: webView, attribute: .centerX, multiplier: 1.0, constant: 0)
         ])
         
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: hiddenToolbarButton), UIBarButtonItem(customView: spinnerView)]
+        navigationItem.rightBarButtonItems = [/*UIBarButtonItem(customView: hiddenToolbarButton),*/ UIBarButtonItem(customView: spinnerView)]
         
         setUpToolbar()
         
@@ -165,6 +168,7 @@ extension WebWithToolbarController: WKNavigationDelegate {
         spinnerView.stopAnimating()
         indicateLabel.text = "Site provided by:\n" + (webView.url?.host ?? "")
         titleLabel.text = webView.title
+        //title = webView.title
         
         guard let toolbarItems = self.toolbarItems else {
             return
@@ -177,4 +181,20 @@ extension WebWithToolbarController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         spinnerView.stopAnimating()
     }
+}
+
+extension WebWithToolbarController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 下面这个方法是取消所有的之前的请求,这个太可怕了 还是有针对性的进行取消
+        // NSObject.cancelPreviousPerformRequests(withTarget: self)
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(scrollViewDidScroll(_:)), object: nil)
+        navigationController?.setToolbarHidden(true, animated: true)
+        perform(#selector(scrollViewDidEndScrollingAnimation(_:)), with: scrollView, afterDelay: 0.1)
+    }
+
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(scrollViewDidEndScrollingAnimation(_:)), object: nil)
+        navigationController?.setToolbarHidden(false, animated: true)
+    }
+
 }
