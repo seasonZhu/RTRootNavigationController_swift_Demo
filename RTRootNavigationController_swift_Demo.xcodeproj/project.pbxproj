@@ -19,6 +19,8 @@
 		613834A423755AF400060DD1 /* NavigationbarHiddenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613834A323755AF400060DD1 /* NavigationbarHiddenController.swift */; };
 		613834A623755BFD00060DD1 /* PushAndRemoveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613834A523755BFD00060DD1 /* PushAndRemoveController.swift */; };
 		6177BEA5237A91B8002EE447 /* CustomNavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6177BEA4237A91B8002EE447 /* CustomNavigationBarController.swift */; };
+		61BDA411237B9268001698BB /* WebWithToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BDA410237B9268001698BB /* WebWithToolbarController.swift */; };
+		61BDA413237BA5DC001698BB /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BDA412237BA5DC001698BB /* MarqueeLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		613834A323755AF400060DD1 /* NavigationbarHiddenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationbarHiddenController.swift; sourceTree = "<group>"; };
 		613834A523755BFD00060DD1 /* PushAndRemoveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAndRemoveController.swift; sourceTree = "<group>"; };
 		6177BEA4237A91B8002EE447 /* CustomNavigationBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarController.swift; sourceTree = "<group>"; };
+		61BDA410237B9268001698BB /* WebWithToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebWithToolbarController.swift; sourceTree = "<group>"; };
+		61BDA412237BA5DC001698BB /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 				613834A323755AF400060DD1 /* NavigationbarHiddenController.swift */,
 				613834A523755BFD00060DD1 /* PushAndRemoveController.swift */,
 				6177BEA4237A91B8002EE447 /* CustomNavigationBarController.swift */,
+				61BDA410237B9268001698BB /* WebWithToolbarController.swift */,
+				61BDA412237BA5DC001698BB /* MarqueeLabel.swift */,
 				6138348B2375192400060DD1 /* Main.storyboard */,
 				6138348E2375192A00060DD1 /* Assets.xcassets */,
 				613834902375192A00060DD1 /* LaunchScreen.storyboard */,
@@ -168,12 +174,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61BDA411237B9268001698BB /* WebWithToolbarController.swift in Sources */,
 				6138348A2375192400060DD1 /* ViewController.swift in Sources */,
 				613834A22375565500060DD1 /* NormalController.swift in Sources */,
 				6177BEA5237A91B8002EE447 /* CustomNavigationBarController.swift in Sources */,
 				613834A02375414A00060DD1 /* DisableInteractivePopController.swift in Sources */,
 				613834A423755AF400060DD1 /* NavigationbarHiddenController.swift in Sources */,
 				613834A623755BFD00060DD1 /* PushAndRemoveController.swift in Sources */,
+				61BDA413237BA5DC001698BB /* MarqueeLabel.swift in Sources */,
 				613834862375192400060DD1 /* AppDelegate.swift in Sources */,
 				613834882375192400060DD1 /* SceneDelegate.swift in Sources */,
 			);

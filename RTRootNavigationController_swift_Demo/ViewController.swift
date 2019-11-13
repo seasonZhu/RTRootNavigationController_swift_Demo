@@ -63,6 +63,8 @@ extension ViewController: UITableViewDelegate {
             navigationController?.pushViewController(PushAndRemoveController(), animated: true)
         case 4:
             navigationController?.pushViewController(CustomNavigationBarController(), animated: true)
+        case 5:
+            navigationController?.pushViewController(WebWithToolbarController(), animated: true)
         default:
             break
         }
