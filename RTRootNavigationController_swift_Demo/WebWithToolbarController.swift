@@ -80,6 +80,8 @@ class WebWithToolbarController: UIViewController {
         webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
         webView.scrollView.showsHorizontalScrollIndicator = false
         webView.scrollView.showsVerticalScrollIndicator = false
+        // 据说是限制只能上下滑动 不能左右滑动 其实是和网页本身有关系
+        //webView.scrollView.contentSize = CGSize(width: 0, height: webView.bounds.height)
         webView.scrollView.delegate = self
         webView.scrollView.contentInset = .zero
         webView.insertSubview(indicateLabel, belowSubview: webView.scrollView)
@@ -155,6 +157,7 @@ extension WebWithToolbarController {
     @objc
     private func onShareAction(_ buttonItem: UIBarButtonItem) {
         print("点击了刷新")
+        webView.scrollView .scrollRectToVisible(view.bounds, animated: true)
     }
 }
 
