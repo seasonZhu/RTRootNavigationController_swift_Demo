@@ -15,6 +15,7 @@ class WebWithToolbarController: UIViewController {
         let webView = WKWebView(frame: CGRect(x: 0, y: 88, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 88))
         webView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         webView.navigationDelegate = self
+        webView.uiDelegate = self
         webView.allowsBackForwardNavigationGestures = true
         return webView
     }()
@@ -76,6 +77,9 @@ class WebWithToolbarController: UIViewController {
             //navigationController?.interactivePopGestureRecognizer?.require(toFail: gestureRecognizer)
         }
         
+        // KVO没有效果
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.backForwardList), options: [.initial, .old, .new, .prior], context: nil)
+        
         view.addSubview(webView)
         webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
         webView.scrollView.showsHorizontalScrollIndicator = false
@@ -120,6 +124,18 @@ class WebWithToolbarController: UIViewController {
         button.addTarget(target, action: action, for: .touchUpInside)
         return UIBarButtonItem(customView: button)
     }
+    
+    override func observeValue(forKeyPath keyPath: String?,
+                                        of object: Any?,
+                                        change: [NSKeyValueChangeKey: Any]?,
+                                        context: UnsafeMutableRawPointer?) {
+            if let wb = object as? WKWebView, keyPath == #keyPath(WKWebView.backForwardList) {
+                print(wb.backForwardList.backList)
+            }else {
+                super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            }
+    }
+            
 }
 
 //MARK:- 按钮的点击事件
@@ -138,6 +154,7 @@ extension WebWithToolbarController {
     @objc
     private func onBackwardAction(_ buttonItem: UIBarButtonItem) {
         if webView.canGoBack {
+            //let some = webView.backForwardList.backItem
             webView.goBack()
         }
     }
@@ -161,10 +178,28 @@ extension WebWithToolbarController {
     }
 }
 
+//MARK:- WKNavigationDelegate 然而没有什么用 果然是这代理是监听一些H5的的弹窗吗?
+extension WebWithToolbarController: WKUIDelegate {
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        print("创建一个新WebView页面")
+        return webView
+    }
+
+    
+    func webViewDidClose(_ webView: WKWebView) {
+        print("WebView关闭了")
+    }
+}
+
 //MARK:- WKNavigationDelegate
 extension WebWithToolbarController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         spinnerView.startAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        // 这个方法解决了 页面进行返回时不会调用webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) 这个方法的情况,保证了标题的准确性
+        titleLabel.text = webView.backForwardList.currentItem?.title
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
