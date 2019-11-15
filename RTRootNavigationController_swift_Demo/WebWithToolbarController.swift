@@ -103,7 +103,7 @@ class WebWithToolbarController: UIViewController {
     
     private func setUpToolbar() {
         let backward = UIBarButtonItem(title: "←", style: .plain, target: self, action: #selector(onBackwardAction(_:)))
-        backward.isEnabled = false
+        backward.isEnabled = true
         
         let forward = UIBarButtonItem(title: "→", style: .plain, target: self, action: #selector(onForwardAction(_:)))
         forward.isEnabled = false
@@ -156,6 +156,8 @@ extension WebWithToolbarController {
         if webView.canGoBack {
             //let some = webView.backForwardList.backItem
             webView.goBack()
+        }else if webView.backForwardList.backList.count == 0 {
+            navigationController?.popViewController(animated: true)
         }
     }
     
@@ -212,7 +214,7 @@ extension WebWithToolbarController: WKNavigationDelegate {
             return
         }
         
-        toolbarItems[0].isEnabled = webView.canGoBack
+        //toolbarItems[0].isEnabled = webView.canGoBack
         toolbarItems[2].isEnabled = webView.canGoForward
     }
     
