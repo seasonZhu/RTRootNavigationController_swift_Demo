@@ -43,6 +43,7 @@ class PushAndRemoveController: UIViewController {
         rt.navigationController?.pushViewController(viewController: NormalController(), animated: switcher.isOn, complete: { (_) in
             self.rt.navigationController?.removeViewController(controller: self)
         })
+//        navigationController?.pushViewController(NormalController(), animated: true)
     }
     
     deinit {

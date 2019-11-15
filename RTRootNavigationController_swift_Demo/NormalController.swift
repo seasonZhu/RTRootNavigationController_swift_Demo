@@ -22,6 +22,9 @@ class NormalController: UIViewController {
         button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
         button.center = view.center
         view.addSubview(button)
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.0) {
+//            self.removeSomeVC()
+//        }
     }
         
     @objc
